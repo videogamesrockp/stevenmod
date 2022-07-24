@@ -1,0 +1,14 @@
+{
+  "emotional_damage": {
+    "subtitle": "sounds.stevenmod.emotional_damage",
+    "sounds": [
+      "stevenmod:emotional_damage"
+    ]
+  },
+  "send_to_jesus": {
+    "subtitle": "sounds.stevenmod.send_to_jesus",
+    "sounds": [
+      "stevenmod:send_to_jesus"
+    ]
+  }
+}
