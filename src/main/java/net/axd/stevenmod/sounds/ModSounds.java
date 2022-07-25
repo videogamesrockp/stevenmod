@@ -18,6 +18,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> SEND_TO_JESUS =
             registerSoundEvent("send_to_jesus");
 
+    public static final RegistryObject<SoundEvent> PAIN =
+            registerSoundEvent("pain");
+
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(Main.MOD_ID, name)));
     }

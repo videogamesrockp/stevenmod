@@ -9,8 +9,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
-import java.util.stream.Collectors;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Main.MOD_ID)
@@ -25,7 +25,8 @@ public class Main {
         ModSounds.register(eventBus);
         eventBus.addListener(this::setup);
 
-        // Register ourselves for server and other game events we are interested in
+        GeckoLib.initialize();
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 

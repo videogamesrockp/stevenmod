@@ -10,5 +10,11 @@
     "sounds": [
       "stevenmod:send_to_jesus"
     ]
+  },
+  "pain": {
+    "subtitle": "sounds.stevenmod.pain",
+    "sounds": [
+      "stevenmod:pain"
+    ]
   }
 }
