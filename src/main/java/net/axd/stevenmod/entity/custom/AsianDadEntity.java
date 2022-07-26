@@ -9,8 +9,10 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,25 +33,28 @@ public class AsianDadEntity extends Monster implements IAnimatable {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.FOLLOW_RANGE, 100.0D)
+                .add(Attributes.FOLLOW_RANGE, 35.0D)
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.ATTACK_DAMAGE, 5.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.5f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.3f).build();
     }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(8, new FloatGoal(this));
+        this.goalSelector.addGoal(8, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 35.0F));
+        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(4, new FloatGoal(this));
+        this.targetSelector.addGoal(4, (new HurtByTargetGoal(this)).setAlertOthers());
         this.targetSelector.addGoal(8, new NearestAttackableTargetGoal<>(this, Player.class, true));
     }
+
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
         if (event.isMoving()) {
             event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.asian_dad.walk", true));
             return PlayState.CONTINUE;
         }
-
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.asian_dad.idle", true));
         return PlayState.CONTINUE;
     }
@@ -66,7 +71,7 @@ public class AsianDadEntity extends Monster implements IAnimatable {
     }
 
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, 0.15F, 1.0F);
+        this.playSound(SoundEvents.ZOMBIE_STEP, 0.25F, 1.0F);
     }
 
     protected SoundEvent getAmbientSound() {
@@ -74,11 +79,13 @@ public class AsianDadEntity extends Monster implements IAnimatable {
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return ModSounds.PAIN.get();
+        this.playSound(ModSounds.PAIN.get(), 2.0F, 1.0F);
+        return null;
     }
 
     protected SoundEvent getDeathSound() {
-        return ModSounds.PAIN.get();
+        this.playSound(ModSounds.PAIN.get(), 2.0F, 1.0F);
+        return null;
     }
 
     protected float getSoundVolume() {

@@ -3,6 +3,7 @@ package net.axd.stevenmod;
 import com.mojang.logging.LogUtils;
 import net.axd.stevenmod.entity.ModEntityTypes;
 import net.axd.stevenmod.entity.client.AsianDadRenderer;
+import net.axd.stevenmod.item.ModItems;
 import net.axd.stevenmod.sounds.ModSounds;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
@@ -28,6 +29,7 @@ public class Main {
 
         ModSounds.register(eventBus);
         ModEntityTypes.register(eventBus);
+        ModItems.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
@@ -40,6 +42,7 @@ public class Main {
     private void clientSetup(final FMLClientSetupEvent event) {
         EntityRenderers.register(ModEntityTypes.ASIAN_DAD.get(), AsianDadRenderer::new);
     }
+
         private void setup(final FMLCommonSetupEvent event) {
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
