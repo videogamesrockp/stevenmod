@@ -33,7 +33,7 @@ public class AsianDadEntity extends Monster implements IAnimatable {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.FOLLOW_RANGE, 35.0D)
+                .add(Attributes.FOLLOW_RANGE, 1000.0D)
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.ATTACK_DAMAGE, 5.0f)
                 .add(Attributes.MOVEMENT_SPEED, 0.3f).build();
@@ -41,7 +41,7 @@ public class AsianDadEntity extends Monster implements IAnimatable {
 
     protected void registerGoals() {
         this.goalSelector.addGoal(8, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 35.0F));
+        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 16.0F));
         this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(4, new FloatGoal(this));
