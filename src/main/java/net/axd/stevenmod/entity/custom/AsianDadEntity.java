@@ -34,8 +34,8 @@ public class AsianDadEntity extends Monster implements IAnimatable {
         return Monster.createMonsterAttributes()
                 .add(Attributes.FOLLOW_RANGE, 100.0D)
                 .add(Attributes.ATTACK_KNOCKBACK, 5.0D)
-                .add(Attributes.MAX_HEALTH, 20.0D)
-                .add(Attributes.JUMP_STRENGTH, 5.0D)
+                .add(Attributes.MAX_HEALTH, 40.0D)
+                .add(Attributes.JUMP_STRENGTH, 100.0D)
                 .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 50.0D)
                 .add(Attributes.ATTACK_DAMAGE, 5.0f)
                 .add(Attributes.MOVEMENT_SPEED, 0.4f).build();
