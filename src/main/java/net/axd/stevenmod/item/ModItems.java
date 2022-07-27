@@ -15,7 +15,7 @@ public class ModItems {
             DeferredRegister.create(ForgeRegistries.ITEMS, Main.MOD_ID);
 
     public static final RegistryObject<Item> ASIAN_DAD_SPAWN_EGG = ITEMS.register("asian_dad_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntityTypes.ASIAN_DAD,0x948e8d, 0x3b3635,
+            () -> new ForgeSpawnEggItem(ModEntityTypes.ASIAN_DAD,0xfffff, 0xff0000,
                     new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
 

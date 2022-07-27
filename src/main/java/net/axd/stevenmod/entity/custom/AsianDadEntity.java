@@ -12,7 +12,6 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,20 +32,19 @@ public class AsianDadEntity extends Monster implements IAnimatable {
 
     public static AttributeSupplier setAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.FOLLOW_RANGE, 1000.0D)
+                .add(Attributes.FOLLOW_RANGE, 100.0D)
+                .add(Attributes.ATTACK_KNOCKBACK, 5.0D)
                 .add(Attributes.MAX_HEALTH, 20.0D)
+                .add(Attributes.JUMP_STRENGTH, 5.0D)
+                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 50.0D)
                 .add(Attributes.ATTACK_DAMAGE, 5.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.3f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.4f).build();
     }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(8, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Player.class, 16.0F));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(4, new FloatGoal(this));
-        this.targetSelector.addGoal(4, (new HurtByTargetGoal(this)).setAlertOthers());
-        this.targetSelector.addGoal(8, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.goalSelector.addGoal(50, new FloatGoal(this));
+        this.goalSelector.addGoal(100, new MeleeAttackGoal(this, 1.0D, true));
+        this.targetSelector.addGoal(100, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
 
 
@@ -84,8 +82,7 @@ public class AsianDadEntity extends Monster implements IAnimatable {
     }
 
     protected SoundEvent getDeathSound() {
-        this.playSound(ModSounds.PAIN.get(), 2.0F, 1.0F);
-        return null;
+        return ModSounds.EMOTIONAL_DAMAGE.get();
     }
 
     protected float getSoundVolume() {
