@@ -42,9 +42,9 @@ public class AsianDadEntity extends Monster implements IAnimatable {
     }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(50, new FloatGoal(this));
-        this.goalSelector.addGoal(100, new MeleeAttackGoal(this, 1.0D, true));
-        this.targetSelector.addGoal(100, new NearestAttackableTargetGoal<>(this, Player.class, false));
+        this.goalSelector.addGoal(1, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
 
 
