@@ -18,6 +18,9 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntityTypes.ASIAN_DAD,0xfffff, 0xff0000,
                     new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+    public static final RegistryObject<Item> REPORT_CARD = ITEMS.register("report_card",
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

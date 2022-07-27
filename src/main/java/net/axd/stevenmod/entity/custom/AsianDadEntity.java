@@ -35,16 +35,16 @@ public class AsianDadEntity extends Monster implements IAnimatable {
                 .add(Attributes.FOLLOW_RANGE, 100.0D)
                 .add(Attributes.ATTACK_KNOCKBACK, 5.0D)
                 .add(Attributes.MAX_HEALTH, 40.0D)
-                .add(Attributes.JUMP_STRENGTH, 100.0D)
-                .add(Attributes.SPAWN_REINFORCEMENTS_CHANCE, 50.0D)
                 .add(Attributes.ATTACK_DAMAGE, 5.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.4f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.45f).build();
     }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new FloatGoal(this));
-        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
+        this.goalSelector.addGoal(100, new MeleeAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(50, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.targetSelector.addGoal(100, new NearestAttackableTargetGoal<>(this, Player.class, false));
+        this.targetSelector.addGoal(50, (new HurtByTargetGoal(this)).setAlertOthers());
     }
 
 
@@ -69,7 +69,7 @@ public class AsianDadEntity extends Monster implements IAnimatable {
     }
 
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.ZOMBIE_STEP, 0.25F, 1.0F);
+        this.playSound(SoundEvents.ZOMBIE_STEP, 1.0F, 1.0F);
     }
 
     protected SoundEvent getAmbientSound() {
@@ -82,7 +82,8 @@ public class AsianDadEntity extends Monster implements IAnimatable {
     }
 
     protected SoundEvent getDeathSound() {
-        return ModSounds.EMOTIONAL_DAMAGE.get();
+        this.playSound(ModSounds.EMOTIONAL_DAMAGE.get(), 2.0F, 1.0F);
+        return null;
     }
 
     protected float getSoundVolume() {
