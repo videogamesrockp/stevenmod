@@ -5,7 +5,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -15,6 +17,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -28,6 +31,7 @@ public class AsianDadEntity extends Monster implements IAnimatable {
 
     public AsianDadEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
+        this.xpReward = 20;
     }
 
     public static AttributeSupplier setAttributes() {
@@ -56,6 +60,7 @@ public class AsianDadEntity extends Monster implements IAnimatable {
         event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.asian_dad.idle", true));
         return PlayState.CONTINUE;
     }
+
 
     @Override
     public void registerControllers(AnimationData data) {
@@ -89,5 +94,4 @@ public class AsianDadEntity extends Monster implements IAnimatable {
     protected float getSoundVolume() {
         return 0.2F;
     }
-
 }

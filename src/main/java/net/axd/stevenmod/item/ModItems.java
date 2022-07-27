@@ -2,6 +2,7 @@ package net.axd.stevenmod.item;
 
 import net.axd.stevenmod.Main;
 import net.axd.stevenmod.entity.ModEntityTypes;
+import net.axd.stevenmod.item.custom.SlipperItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -20,6 +21,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> REPORT_CARD = ITEMS.register("report_card",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+
+    public static final RegistryObject<Item> SLIPPER = ITEMS.register("slipper",
+            () -> new SlipperItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC).durability(640)));
 
 
     public static void register(IEventBus eventBus) {
