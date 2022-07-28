@@ -15,7 +15,7 @@ public class AsianDadRenderer extends GeoEntityRenderer<AsianDadEntity> {
 
     public AsianDadRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new AsianDadModel());
-        this.shadowRadius = 0.3f;
+        this.shadowRadius = 1.0f;
     }
     @Override
     public ResourceLocation getTextureLocation(AsianDadEntity instance) {

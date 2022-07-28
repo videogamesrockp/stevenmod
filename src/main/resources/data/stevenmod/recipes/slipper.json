@@ -13,6 +13,14 @@
     ],
     "result": {
         "item": "stevenmod:slipper",
+        "nbt":
+        {
+            "enchantments":
+            {
+                "id": 31,
+                "lvl": 3
+            }
+        },
         "count": 1
     }
 }

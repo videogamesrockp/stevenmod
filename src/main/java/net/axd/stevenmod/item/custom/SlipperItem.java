@@ -11,6 +11,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,7 +24,11 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.TridentLoyaltyEnchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -50,12 +55,14 @@ public class SlipperItem extends Item {
         return UseAnim.SPEAR;
     }
 
-
     public int getUseDuration(ItemStack pStack) {
         return 72000;
     }
 
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
+        if (!EnchantmentHelper.getEnchantments(pStack).containsKey(Enchantments.LOYALTY)) {
+            pStack.enchant(Enchantments.LOYALTY, 50);
+        }
         if (pEntityLiving instanceof Player) {
             Player player = (Player)pEntityLiving;
             int i = this.getUseDuration(pStack) - pTimeLeft;
@@ -119,7 +126,6 @@ public class SlipperItem extends Item {
             return InteractionResultHolder.consume(itemstack);
         }
     }
-
 
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
         pStack.hurtAndBreak(1, pAttacker, (p_43414_) -> {

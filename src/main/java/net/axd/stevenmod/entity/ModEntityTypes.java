@@ -24,7 +24,7 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<AsianDadEntity>> ASIAN_DAD =
             ENTITY_TYPES.register("asian_dad",
                     () -> EntityType.Builder.of(AsianDadEntity::new, MobCategory.MONSTER)
-                            .sized(1.0f, 1.0f)
+                            .sized(1.15f, 2.8f)
                             .build(new ResourceLocation(Main.MOD_ID, "asian_dad").toString()));
 
 
