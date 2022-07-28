@@ -24,7 +24,9 @@ import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
@@ -37,6 +39,7 @@ public class SlipperProjectile extends AbstractArrow {
     private ItemStack slipperItem = new ItemStack(ModItems.SLIPPER.get());
     private boolean dealtDamage;
     public int clientSideReturnSlipperTickCount;
+
 
     public SlipperProjectile(EntityType<SlipperProjectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -55,9 +58,6 @@ public class SlipperProjectile extends AbstractArrow {
         this.entityData.define(ID_FOIL, false);
     }
 
-    /**
-     * Called to update the entity's position/logic.
-     */
     public void tick() {
         if (this.inGroundTime > 4) {
             this.dealtDamage = true;
@@ -118,9 +118,7 @@ public class SlipperProjectile extends AbstractArrow {
         return this.dealtDamage ? null : super.findHitEntity(pStartVec, pEndVec);
     }
 
-    /**
-     * Called when the arrow hits an entity
-     */
+
     protected void onHitEntity(EntityHitResult pResult) {
         Entity entity = pResult.getEntity();
         float f = 8.0F;

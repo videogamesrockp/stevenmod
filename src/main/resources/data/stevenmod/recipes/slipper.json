@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "stevenmod:report_card"
+        },
+        {
+            "item": "stevenmod:report_card"
+        },
+        {
+            "item": "stevenmod:report_card"
+        }
+    ],
+    "result": {
+        "item": "stevenmod:slipper",
+        "count": 1
+    }
+}

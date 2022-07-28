@@ -55,7 +55,6 @@ public class SlipperItem extends Item {
         return 72000;
     }
 
-
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
         if (pEntityLiving instanceof Player) {
             Player player = (Player)pEntityLiving;
@@ -143,7 +142,6 @@ public class SlipperItem extends Item {
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot pEquipmentSlot) {
         return pEquipmentSlot == EquipmentSlot.MAINHAND ? this.defaultModifiers : super.getDefaultAttributeModifiers(pEquipmentSlot);
     }
-
 
     public int getEnchantmentValue() {
         return 1;
