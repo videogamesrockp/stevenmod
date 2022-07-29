@@ -12,7 +12,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    REPORT_CARD("report_card", 28, new int[]{3, 7, 11, 4}, 19, SoundEvents.ARMOR_EQUIP_GOLD,
+    REPORT_CARD("report_card", 28, new int[]{3, 7, 11, 4}, 19, SoundEvents.ARMOR_EQUIP_LEATHER,
             2.0F, 1.0F, () -> Ingredient.of(ModItems.REPORT_CARD.get()));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

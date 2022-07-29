@@ -61,7 +61,7 @@ public class SlipperItem extends Item {
 
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
         if (!EnchantmentHelper.getEnchantments(pStack).containsKey(Enchantments.LOYALTY)) {
-            pStack.enchant(Enchantments.LOYALTY, 100);
+            pStack.enchant(Enchantments.LOYALTY, 50);
         }
         if (pEntityLiving instanceof Player) {
             Player player = (Player)pEntityLiving;

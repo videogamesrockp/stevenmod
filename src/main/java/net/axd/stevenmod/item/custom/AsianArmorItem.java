@@ -26,7 +26,7 @@ public class AsianArmorItem extends GeoArmorItem implements IAnimatable {
 
     private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>())
-                    .put(ModArmorMaterials.REPORT_CARD, new MobEffectInstance(MobEffects.GLOWING, 5, 1)).build();
+                    .put(ModArmorMaterials.REPORT_CARD, new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 1)).build();
 
     public AsianArmorItem(ArmorMaterial material, EquipmentSlot slot, Properties settings) {
         super(material, slot, settings);
