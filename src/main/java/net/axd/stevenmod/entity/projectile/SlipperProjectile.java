@@ -110,9 +110,6 @@ public class SlipperProjectile extends AbstractArrow {
         return this.entityData.get(ID_FOIL);
     }
 
-    /**
-     * Gets the EntityHitResult representing the entity hit
-     */
     @Nullable
     protected EntityHitResult findHitEntity(Vec3 pStartVec, Vec3 pEndVec) {
         return this.dealtDamage ? null : super.findHitEntity(pStartVec, pEndVec);
