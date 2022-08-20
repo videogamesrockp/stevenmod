@@ -51,7 +51,7 @@ public class AsianDadEntity extends Monster implements IAnimatable {
                 .add(Attributes.ATTACK_KNOCKBACK, 5.0D)
                 .add(Attributes.MAX_HEALTH, 40.0D)
                 .add(Attributes.ATTACK_DAMAGE, 5.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.45f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.5f).build();
     }
 
     protected void registerGoals() {
